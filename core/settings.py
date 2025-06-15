@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
     "blog",
     "rest_framework"
 ]
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -53,7 +55,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "core.urls"
-
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+]
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -91,7 +95,7 @@ STORAGES = {
           "secret_key": env('secret_key'),
           "bucket_name": env('bucket_name'),
           "region_name": env('region_name'),
-          "endpoint_url": env('https://lcszkctcjtdqwgcgtjsp.supabase.co/storage/v1/s3'),
+          "endpoint_url": env('endpoint_url'),
           "addressing_style": "path",
           "signature_version": "s3v4",
         },
