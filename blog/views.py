@@ -4,19 +4,22 @@ from rest_framework.response import Response
 from .models import Section, Post
 
 
-
 class PostViewSet(viewsets.ViewSet):
     """
     For the posts
     """
-    def list(self , request):
+    lookup_field = 'url'  # Use 'slug' as the custom lookup field
+
+    def list(self, request):
         queryset = Post.objects.filter(is_public=True)
         serializer = MinimalPostSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, pk=None):
-        queryset = Post.objects.filter(is_public=True)
-        serializer = PostSerializer(queryset, many=True)
+    def retrieve(self, request, url=None):
+        try:
+            post = Post.objects.get(is_public=True, url=url)
+        except Post.DoesNotExist:
+            return Response({'detail': 'Not found.'}, status=404)
+        serializer = PostSerializer(post)
         return Response(serializer.data)
-  
 
