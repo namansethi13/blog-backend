@@ -28,7 +28,7 @@ DEBUG = bool(int(env('debug')))
 
 ALLOWED_HOSTS = ["namansethi13.pythonanywhere.com"]
 
-
+STATIC_ROOT = "media"
 # Application definition
 
 INSTALLED_APPS = [
