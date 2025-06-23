@@ -26,7 +26,7 @@ SECRET_KEY = env('secret_key')
 
 DEBUG = bool(int(env('debug')))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["namansethi13.pythonanywhere.com"]
 
 
 # Application definition
