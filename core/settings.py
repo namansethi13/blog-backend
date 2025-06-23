@@ -28,8 +28,10 @@ DEBUG = bool(int(env('debug')))
 
 ALLOWED_HOSTS = ["namansethi13.pythonanywhere.com"]
 
-STATIC_ROOT = "media"
-# Application definition
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles' 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 INSTALLED_APPS = [
     "django.contrib.admin",
