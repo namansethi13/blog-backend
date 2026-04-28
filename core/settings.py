@@ -26,7 +26,7 @@ SECRET_KEY = env('secret_key')
 
 DEBUG = bool(int(env('debug')))
 
-ALLOWED_HOSTS = ["namansethi13.pythonanywhere.com"]
+ALLOWED_HOSTS = ["namansethi13.pythonanywhere.com", "localhost"]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles' 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "blog",
+    "profile_app",
     "rest_framework"
 ]
 
@@ -59,8 +60,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = "core.urls"
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'https://namansethi.vercel.app/', 
-    'https://namansethi.is-a.dev/'
+    'https://namansethi.vercel.app', 
+    'https://namansethi.is-a.dev'
 ]
 TEMPLATES = [
     {
@@ -93,16 +94,7 @@ DATABASES = {
 
 STORAGES = {
     "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {
-          "access_key": env('access_key'),
-          "secret_key": env('secret_key'),
-          "bucket_name": env('bucket_name'),
-          "region_name": env('region_name'),
-          "endpoint_url": env('endpoint_url'),
-          "addressing_style": "path",
-          "signature_version": "s3v4",
-        },
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"
