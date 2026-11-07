@@ -26,7 +26,7 @@ SECRET_KEY = env('secret_key')
 
 DEBUG = bool(int(env('debug')))
 
-ALLOWED_HOSTS = ["namansethi13.pythonanywhere.com", "localhost"]
+ALLOWED_HOSTS = ["namansethi13.pythonanywhere.com", "localhost", "62.238.105.159", ".trycloudflare.com"]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles' 
